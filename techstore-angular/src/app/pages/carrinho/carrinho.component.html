@@ -1,0 +1,68 @@
+<div class="carrinho-container">
+  <h1 class="page-title">🛒 Meu Carrinho</h1>
+
+  <!-- Pedido finalizado -->
+  <div class="finalizado" *ngIf="finalizado">
+    <div class="finalizado-card">
+      <div class="check">✅</div>
+      <h2>Pedido realizado com sucesso!</h2>
+      <p>Obrigado pela sua compra. Você receberá uma confirmação em breve.</p>
+      <a routerLink="/" class="btn-continuar">Continuar Comprando</a>
+    </div>
+  </div>
+
+  <!-- Carrinho vazio -->
+  <div class="vazio" *ngIf="itens.length === 0 && !finalizado">
+    <div class="vazio-icon">🛍️</div>
+    <h2>Seu carrinho está vazio</h2>
+    <p>Adicione produtos para continuar</p>
+    <a routerLink="/" class="btn-continuar">Ver Produtos</a>
+  </div>
+
+  <!-- Lista de itens -->
+  <div class="carrinho-layout" *ngIf="itens.length > 0 && !finalizado">
+    <div class="itens-lista">
+      <div class="item-card" *ngFor="let item of itens">
+        <img [src]="item.produto.image" [alt]="item.produto.title" class="item-img" />
+        <div class="item-info">
+          <a [routerLink]="['/produto', item.produto.id]" class="item-titulo">
+            {{ item.produto.title }}
+          </a>
+          <span class="item-categoria">{{ item.produto.category | titlecase }}</span>
+          <span class="item-preco-unit">R$ {{ item.produto.price | number:'1.2-2' }} / un</span>
+        </div>
+        <div class="item-controles">
+          <button class="btn-qtd" (click)="diminuir(item.produto.id, item.quantidade)">−</button>
+          <span class="quantidade">{{ item.quantidade }}</span>
+          <button class="btn-qtd" (click)="aumentar(item.produto.id, item.quantidade)">+</button>
+        </div>
+        <div class="item-subtotal">
+          R$ {{ (item.produto.price * item.quantidade) | number:'1.2-2' }}
+        </div>
+        <button class="btn-remover" (click)="remover(item.produto.id)" title="Remover">✕</button>
+      </div>
+    </div>
+
+    <div class="resumo">
+      <h2>Resumo do Pedido</h2>
+      <div class="resumo-linha">
+        <span>Itens ({{ totalItens }})</span>
+        <span>R$ {{ total | number:'1.2-2' }}</span>
+      </div>
+      <div class="resumo-linha">
+        <span>Frete</span>
+        <span class="gratis" *ngIf="total >= 200">Grátis</span>
+        <span *ngIf="total < 200">R$ 19,90</span>
+      </div>
+      <div class="resumo-total">
+        <span>Total</span>
+        <span>R$ {{ (total >= 200 ? total : total + 19.9) | number:'1.2-2' }}</span>
+      </div>
+      <button class="btn-finalizar" (click)="finalizar()">
+        Finalizar Compra
+      </button>
+      <a routerLink="/" class="btn-voltar">Continuar Comprando</a>
+    </div>
+  </div>
+
+</div>

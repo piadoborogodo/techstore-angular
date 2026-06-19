@@ -1,0 +1,75 @@
+<div class="detalhe-container">
+
+  <!-- Voltar -->
+  <button class="btn-voltar" (click)="voltar()">
+    ← Voltar aos produtos
+  </button>
+
+  <!-- Loading -->
+  <div class="loading" *ngIf="loading">
+    <div class="spinner"></div>
+    <p>Carregando produto...</p>
+  </div>
+
+  <!-- Erro -->
+  <div class="erro-msg" *ngIf="erro && !loading">
+    <p>⚠️ {{ erro }}</p>
+    <a routerLink="/">Voltar à loja</a>
+  </div>
+
+  <!-- Produto -->
+  <div class="produto-card" *ngIf="produto && !loading">
+    <div class="produto-img">
+      <img [src]="produto.image" [alt]="produto.title" />
+    </div>
+
+    <div class="produto-info">
+      <span class="categoria">{{ produto.category | titlecase }}</span>
+      <h1 class="titulo">{{ produto.title }}</h1>
+
+      <div class="rating">
+        <span
+          *ngFor="let estrela of gerarEstrelas(produto.rating.rate)"
+          [class.cheia]="estrela === '★'"
+        >{{ estrela }}</span>
+        <span class="rating-valor">{{ produto.rating.rate }}/5</span>
+        <span class="rating-count">— {{ produto.rating.count }} avaliações</span>
+      </div>
+
+      <div class="preco">
+        R$ {{ produto.price | number:'1.2-2' }}
+      </div>
+
+      <p class="descricao">{{ produto.description }}</p>
+
+      <div class="toast-sucesso" *ngIf="mensagemCarrinho">
+        ✅ {{ mensagemCarrinho }}
+      </div>
+
+      <div class="acoes">
+        <button class="btn-carrinho" (click)="adicionarAoCarrinho()">
+          🛒 Adicionar ao Carrinho
+        </button>
+        <a routerLink="/carrinho" class="btn-ir-carrinho">
+          Ver Carrinho
+        </a>
+      </div>
+
+      <div class="info-entrega">
+        <div class="info-item">
+          <span class="icon">🚚</span>
+          <span>Frete grátis acima de R$ 200</span>
+        </div>
+        <div class="info-item">
+          <span class="icon">🔄</span>
+          <span>Devolução em até 30 dias</span>
+        </div>
+        <div class="info-item">
+          <span class="icon">🔒</span>
+          <span>Pagamento 100% seguro</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

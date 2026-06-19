@@ -1,0 +1,79 @@
+<div class="home-container">
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>🛒 TechStore</h1>
+    <p>Os melhores produtos de tecnologia com os melhores preços</p>
+  </section>
+
+  <!-- Filtros -->
+  <div class="filtros">
+    <div class="filtros-inner">
+      <input
+        type="text"
+        [(ngModel)]="termoBusca"
+        (input)="onBuscaChange()"
+        placeholder=" Buscar produtos..."
+        class="input-busca"
+      />
+      <select [(ngModel)]="categoriaSelecionada" (change)="onCategoriaChange()" class="select-categoria">
+        <option value="todas">Todas as categorias</option>
+        <option *ngFor="let cat of categorias" [value]="cat">
+          {{ traduzirCategoria(cat) }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Loading -->
+  <div class="loading" *ngIf="loading">
+    <div class="spinner"></div>
+    <p>Carregando produtos...</p>
+  </div>
+
+  <!-- Erro -->
+  <div class="erro-msg" *ngIf="erro && !loading">
+    <span>⚠️ {{ erro }}</span>
+    <button (click)="carregarProdutos()">Tentar novamente</button>
+  </div>
+
+  <!-- Resultado vazio -->
+  <div class="vazio" *ngIf="!loading && !erro && produtosFiltrados.length === 0">
+    <p>😕 Nenhum produto encontrado para "<strong>{{ termoBusca }}</strong>"</p>
+  </div>
+
+  <!-- Grid de Produtos -->
+  <div class="contador" *ngIf="!loading && !erro && produtosFiltrados.length > 0">
+    {{ produtosFiltrados.length }} produto(s) encontrado(s)
+  </div>
+
+  <div class="produtos-grid" *ngIf="!loading && !erro">
+    <div
+      class="card"
+      *ngFor="let produto of produtosFiltrados"
+      [routerLink]="['/produto', produto.id]"
+    >
+      <div class="card-img">
+        <img [src]="produto.image" [alt]="produto.title" loading="lazy" />
+      </div>
+      <div class="card-body">
+        <span class="categoria">{{ traduzirCategoria(produto.category) }}</span>
+        <h3 class="titulo">{{ produto.title }}</h3>
+        <div class="rating">
+          <span
+            *ngFor="let estrela of gerarEstrelas(produto.rating.rate)"
+            [class.cheia]="estrela === '★'"
+          >{{ estrela }}</span>
+          <span class="rating-count">({{ produto.rating.count }})</span>
+        </div>
+        <div class="card-footer">
+          <span class="preco">R$ {{ produto.price | number:'1.2-2' }}</span>
+          <button class="btn-comprar" (click)="adicionarAoCarrinho($event, produto)">
+            + Carrinho
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
