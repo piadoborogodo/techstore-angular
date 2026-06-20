@@ -60,7 +60,7 @@ npm --version
 
 **1. Clone o repositório:**
 ```bash
-git clone https://github.com/SEU_USUARIO/techstore-angular.git
+git clone https://github.com/piadoborogodo/techstore-angular.git
 cd techstore-angular
 ```
 
@@ -118,12 +118,8 @@ Os arquivos são gerados na pasta `dist/techstore-angular`.
 ##  Integrantes do Grupo
 
 | Nome | RA |
-|---|---|
-| (Nome do integrante 1) | (RA) |
-| (Nome do integrante 2) | (RA) |
-| (Nome do integrante 3) | (RA) |
-| (Nome do integrante 4) | (RA) |
-| (Nome do integrante 5) | (RA) |
+(Matheus Henrique Vieira Baldão)	(25087132-2)
+(Vitor Gabriel Vieira Baldão)	(25089203-2)
 
 ##  Referências
 
