@@ -2,7 +2,7 @@
 
 Projeto desenvolvido como parte do trabalho prático da disciplina **Programação Front-End** do curso de Análise e Desenvolvimento de Sistemas — Unicesumar.
 
-## 📋 Sobre o Projeto
+##  Sobre o Projeto
 
 **TechStore** é uma loja virtual de produtos de tecnologia construída com Angular 17. A aplicação consome a [FakeStore API](https://fakestoreapi.com) e possui as seguintes páginas:
 
@@ -12,7 +12,7 @@ Projeto desenvolvido como parte do trabalho prático da disciplina **Programaç�
 | Detalhe | `/produto/:id` | Informações completas de um produto |
 | Carrinho | `/carrinho` | Gerenciamento do carrinho de compras |
 
-## 🚀 Tecnologias Utilizadas
+##  Tecnologias Utilizadas
 
 - **Angular 17** — Framework principal
 - **TypeScript** — Linguagem base
@@ -22,7 +22,7 @@ Projeto desenvolvido como parte do trabalho prático da disciplina **Programaç�
 - **Karma + Jasmine** — Testes unitários
 - **FakeStore API** — API pública de produtos
 
-## 📁 Estrutura do Projeto
+##  Estrutura do Projeto
 
 ```
 src/
@@ -43,7 +43,7 @@ src/
 └── styles.css
 ```
 
-## ⚙️ Pré-requisitos
+##  Pré-requisitos
 
 Antes de começar, certifique-se de ter instalado:
 
@@ -56,7 +56,7 @@ node --version
 npm --version
 ```
 
-## 🔧 Instalação e Configuração
+##  Instalação e Configuração
 
 **1. Clone o repositório:**
 ```bash
@@ -81,7 +81,7 @@ http://localhost:4200
 
 > A aplicação consome a FakeStore API pública. É necessária conexão com a internet.
 
-## 🧪 Executando os Testes
+##  Executando os Testes
 
 Para rodar os testes unitários com Karma e Jasmine:
 
@@ -95,14 +95,14 @@ ng test --code-coverage
 ```
 O relatório é gerado em `coverage/techstore-angular/index.html`.
 
-## 📦 Build para Produção
+##  Build para Produção
 
 ```bash
 ng build --configuration production
 ```
 Os arquivos são gerados na pasta `dist/techstore-angular`.
 
-## 📸 Funcionalidades
+##  Funcionalidades
 
 - ✅ Listagem de produtos via API REST (FakeStore API)
 - ✅ Busca em tempo real com `debounceTime` (RxJS)
@@ -115,7 +115,7 @@ Os arquivos são gerados na pasta `dist/techstore-angular`.
 - ✅ Testes unitários do Service e do HomeComponent
 - ✅ Layout responsivo (mobile e desktop)
 
-## 👥 Integrantes do Grupo
+##  Integrantes do Grupo
 
 | Nome | RA |
 |---|---|
@@ -125,7 +125,7 @@ Os arquivos são gerados na pasta `dist/techstore-angular`.
 | (Nome do integrante 4) | (RA) |
 | (Nome do integrante 5) | (RA) |
 
-## 📚 Referências
+##  Referências
 
 - [Documentação oficial do Angular](https://angular.dev)
 - [FakeStore API](https://fakestoreapi.com)
