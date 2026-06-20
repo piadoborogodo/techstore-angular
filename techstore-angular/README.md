@@ -1,4 +1,4 @@
-# 🛒 TechStore — Aplicação Angular
+#  TechStore — Aplicação Angular
 
 Projeto desenvolvido como parte do trabalho prático da disciplina **Programação Front-End** do curso de Análise e Desenvolvimento de Sistemas — Unicesumar.
 
